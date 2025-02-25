@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Interactive</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<style>
+    body {
+        font-family: serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        color: white;
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 10%;
+        background: orange;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Cursive';
+    }
+    
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+    
+    nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        padding-bottom: 5px;
+    }
+    
+    nav a.active {
+        border-bottom: 2px solid #008080;
+    }
+    /* Contact Section */
+    
+    .contact-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 80px;
+        flex-wrap: wrap;
+    }
+    /* Contact Form */
+    
+    .contact-form {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        transition: 0.3s ease-in-out;
+    }
+    
+    .contact-form h2 {
+        text-align: center;
+        color: #333;
+    }
+    
+    .input-group {
+        position: relative;
+        margin: 20px 0;
+    }
+    
+    .input-group input,
+    .input-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+    
+    .input-group label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #aaa;
+        transition: 0.3s;
+    }
+    
+    .input-group input:focus~label,
+    .input-group textarea:focus~label,
+    .input-group input:valid~label,
+    .input-group textarea:valid~label {
+        top: -15px;
+        left: 5px;
+        color: orange;
+        font-size: 12px;
+    }
+    
+    .send-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .contact-details {
+        color: black;
+    }
+    
+    .send-btn:hover {
+        background-color: orange;
+    }
+    /* Chatbot */
+    
+    .chatbot {
+        text-align: center;
+        padding: 40px;
+        color: black;
+    }
+    
+    .chat-btn {
+        background: orange;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 50px;
+        right: 30px;
+        background: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 300px;
+        padding: 10px;
+    }
+    
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background: orange;
+        color: white;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .chat-body {
+        padding: 10px;
+        min-height: 100px;
+    }
+    
+    .chat-input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-top: 1px solid #ddd;
+    }
+    /* Map */
+    
+    .map {
+        text-align: center;
+        padding: 40px;
+        color: black;
+    }
+    /* Social Media Icons Container */
+    
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        /* Aligns icons to center */
+        gap: 8px;
+        /* Space between icons */
+        margin-top: 20px;
+    }
+    /* Style for Each Icon */
+    
+    .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        /* Icon size */
+        height: 40px;
+        background-color: #f4f4f4;
+        /* Background color */
+        border-radius: 50%;
+        /* Makes the icons round */
+        text-decoration: none;
+        transition: all 0.3s ease;
+        /* Smooth hover effect */
+    }
+    /* Icon Styling */
+    
+    .social-icons a i {
+        font-size: 20px;
+        /* Icon size */
+        color: orange;
+        /* Default color */
+    }
+    /* Hover Effects */
+    
+    .social-icons a:hover {
+        background-color: orange;
+        /* Change background on hover */
+    }
+    
+    .social-icons a:hover i {
+        color: white;
+        /* Change icon color on hover */
+    }
+</style>
+
+<body>
+
+    <header>
+        <div class="logo">Cara</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-container">
+        <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <p>We’d love to hear from you! Drop us a message below.</p>
+            <form id="contactForm">
+                <div class="input-group">
+                    <input type="text" id="name" name="name" required>
+                    <label for="name">Full Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email Address</label>
+                </div>
+
+                <div class="input-group">
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <label for="message">Message</label>
+                </div>
+
+                <button type="submit" class="send-btn">Send Message</button>
+            </form>
+        </div>
+
+        <div class="contact-details">
+            <h2>Our Store</h2>
+            <p><strong>Address:</strong> 123 Fashion Street, New York, NY 10001</p>
+            <p><strong>Phone:</strong> +1 234 567 890</p>
+            <p><strong>Email:</strong> support@ecommerce.com</p>
+
+            <h3>Follow Us</h3>
+            <!-- Add FontAwesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="chatbot">
+        <h2>Need Quick Help?</h2>
+        <button class="chat-btn" onclick="toggleChat()">Chat with Us</button>
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-header">
+                <span>Live Chat</span>
+                <button class="close-chat" onclick="toggleChat()">×</button>
+            </div>
+            <div class="chat-body">
+                <p>👋 Hello! How can we assist you today?</p>
+            </div>
+            <input type="text" class="chat-input" placeholder="Type your message...">
+        </div>
+    </section>
+
+    <section class="map">
+        <h2>Visit Us</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.758502335711!2d-74.0059411845959!3d40.712776179331875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a19d94d1ff1%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1633014082292"
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </section>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            if (name && email && message) {
+                alert("Thank you, " + name + "! Your message has been sent.");
+                document.getElementById("contactForm").reset();
+            } else {
+                alert("Please fill out all fields.");
+            }
+        });
+
+        function toggleChat() {
+            let chatPopup = document.getElementById("chatPopup");
+            chatPopup.style.display = (chatPopup.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</body>
+
+</html>
